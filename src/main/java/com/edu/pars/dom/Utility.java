@@ -1,4 +1,4 @@
-package com.edu.pars;
+package com.edu.pars.dom;
 
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -11,7 +11,7 @@ public class Utility {
         }
         return false;
     }
-    static boolean isCorrect(Node node){
+    public static boolean isCorrect(Node node){
         if (!node.getTextContent().trim().isEmpty()
                 &&
                 !((Text)node.getFirstChild()).getData().trim().isEmpty()

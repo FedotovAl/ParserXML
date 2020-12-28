@@ -90,8 +90,8 @@
         <course>
             <id>1</id>
             <name>Overview of Eclipse IDE</name>
-            <author>SomeAuthor</author>
-            <createDate>2010-10-30</createDate>
+            <author>Adam Smith</author>
+            <createDate>2010-10-01</createDate>
             <tasks>
                 <taskID>1</taskID>
             </tasks>
@@ -99,8 +99,8 @@
         <course>
             <id>2</id>
             <name>Основы языка Java</name>
-            <author>SomeAuthor</author>
-            <createDate>2010-10-30</createDate>
+            <author>Bruce Fisher</author>
+            <createDate>2010-10-02</createDate>
             <tasks>
                 <taskID>2</taskID>
                 <taskID>3</taskID>
@@ -109,8 +109,8 @@
         <course>
             <id>3</id>
             <name>Язык Java - расширенные возможности</name>
-            <author>SomeAuthor</author>
-            <createDate>2010-10-30</createDate>
+            <author>Bruce Fisher</author>
+            <createDate>2010-10-03</createDate>
             <tasks>
                 <taskID>4</taskID>
                 <taskID>5</taskID>
@@ -119,8 +119,8 @@
         <course>
             <id>4</id>
             <name>Язык XML</name>
-            <author>SomeAuthor</author>
-            <createDate>2010-10-30</createDate>
+            <author>Nikolay Orlov</author>
+            <createDate>2010-10-10</createDate>
             <tasks>
                 <taskID>6</taskID>
                 <taskID>7</taskID>
@@ -129,8 +129,8 @@
         <course>
             <id>5</id>
             <name>Язык XSLT и XPath</name>
-            <author>SomeAuthor</author>
-            <createDate>2010-10-30</createDate>
+            <author>Nikolay Orlov</author>
+            <createDate>2010-10-20</createDate>
             <tasks>
                 <taskID>8</taskID>
                 <taskID>9</taskID>
@@ -139,8 +139,8 @@
         <course>
             <id>6</id>
             <name>Технология Struts Framework</name>
-            <author>SomeAuthor</author>
-            <createDate>2010-10-30</createDate>
+            <author>Adam Smith</author>
+            <createDate>2010-10-23</createDate>
             <tasks>
                 <taskID>10</taskID>
                 <taskID>11</taskID>
@@ -150,8 +150,8 @@
         <course>
             <id>7</id>
             <name>Процесс производства программного обеспечения</name>
-            <author>SomeAuthor</author>
-            <createDate>2010-10-30</createDate>
+            <author>Adam Smith</author>
+            <createDate>2015-11-25</createDate>
             <tasks>
                 <taskID>13</taskID>
                 <taskID>14</taskID>
@@ -161,8 +161,8 @@
         <course>
             <id>8</id>
             <name>Процесс разработки программного обеспечени</name>
-            <author>SomeAuthor</author>
-            <createDate>2010-10-30</createDate>
+            <author>George Wagner</author>
+            <createDate>2016-11-25</createDate>
             <tasks>
                 <taskID>16</taskID>
             </tasks>

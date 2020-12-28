@@ -1,57 +1,49 @@
 package com.edu.pars;
 
-import org.w3c.dom.*;
+import com.edu.pars.dom.ParserDOM;
+import com.edu.pars.sax.ParserSAX;
+import com.edu.pars.view.TablePrinter;
 import org.xml.sax.SAXException;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
+import javax.xml.parsers.*;
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
-
-import static com.edu.pars.TablePrinter.printTableValues;
 
 public class Application {
     public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
 
-        String defaultFilePath = "src/main/resources/StudentReport.xml";
         while(true) {
-            System.out.println("Enter command: ");
+            System.out.println("enter command: ");
             Scanner scanner = new Scanner(System.in);
             String command = scanner.nextLine();
             CommandReader.readCommand(command);
 
-            if (CommandReader.parserName.equals("dom")) {
-
-                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-                DocumentBuilder builder = factory.newDocumentBuilder();
-                Document document = builder.parse(new File(CommandReader.filePath));
-
-                Element element = document.getDocumentElement();
-                NodeList courseList = element.getElementsByTagName("course");
-                TablePrinter.printTableHeader(courseList.item(0).getChildNodes());
-
-                if (CommandReader.keyString.equals("-all")) {
-                    for (int i = 0; i < courseList.getLength(); i++) {
-                        printTableValues(courseList.item(i).getChildNodes());
-                    }
-                } else {
-                    paramStart(courseList, CommandReader.keyString);
+            switch (CommandReader.parserName){
+                case "dom": {
+                    List<CourseModel> courses = ParserDOM.parse();
+                    chooseCoursesByName(courses, CommandReader.keyString);
+                    break;
                 }
-            } else {
-                System.out.println("incorrect parser name");
+                case "sax": {
+                    List<CourseModel> courses = ParserSAX.parse();
+                    chooseCoursesByName(courses, CommandReader.keyString);
+                    break;
+                }
+                default:{
+                    System.out.println("Incorrect parser name");
+                }
             }
         }
     }
 
-    public static void paramStart(NodeList nodeList, String str){
-        String value = "";
-        for (int i = 0; i < nodeList.getLength(); i++){
-            Text text = (Text) nodeList.item(i).getChildNodes().item(3).getFirstChild();
-            value = text.getData().trim();
-            if (value.contains(str)){
-                printTableValues(nodeList.item(i).getChildNodes());
+    private static void chooseCoursesByName(List<CourseModel> courseList, String str){
+        TablePrinter.printTableHeader();
+        for (CourseModel c : courseList){
+            if (str.equals("-all")){
+                TablePrinter.printTableValues(c);
+            } else if (c.getName().contains(str)){
+                TablePrinter.printTableValues(c);
             }
         }
     }

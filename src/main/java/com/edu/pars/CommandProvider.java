@@ -1,6 +1,6 @@
 package com.edu.pars;
 
-public class CommandReader {
+public class CommandProvider {
     public static String parserName;
     public static String filePath;
     public static String keyString;

@@ -1,6 +1,6 @@
 package com.edu.pars.sax;
 
-import com.edu.pars.CommandReader;
+import com.edu.pars.CommandProvider;
 import com.edu.pars.CourseModel;
 import org.xml.sax.SAXException;
 
@@ -17,7 +17,7 @@ public class ParserSAX {
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
         try {
-            parser.parse(new File(CommandReader.filePath), mainHandler);
+            parser.parse(new File(CommandProvider.filePath), mainHandler);
         } catch (Exception e){
             System.out.println(e);
         }

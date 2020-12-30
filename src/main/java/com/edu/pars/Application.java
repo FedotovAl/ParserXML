@@ -17,17 +17,17 @@ public class Application {
             System.out.println("enter command: ");
             Scanner scanner = new Scanner(System.in);
             String command = scanner.nextLine();
-            CommandReader.readCommand(command);
+            CommandProvider.readCommand(command);
 
-            switch (CommandReader.parserName){
+            switch (CommandProvider.parserName){
                 case "dom": {
                     List<CourseModel> courses = ParserDOM.parse();
-                    chooseCoursesByName(courses, CommandReader.keyString);
+                    chooseCoursesByName(courses, CommandProvider.keyString);
                     break;
                 }
                 case "sax": {
                     List<CourseModel> courses = ParserSAX.parse();
-                    chooseCoursesByName(courses, CommandReader.keyString);
+                    chooseCoursesByName(courses, CommandProvider.keyString);
                     break;
                 }
                 default:{

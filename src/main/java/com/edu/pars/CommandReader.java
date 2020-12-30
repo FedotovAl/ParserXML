@@ -6,6 +6,7 @@ public class CommandReader {
     public static String keyString;
 
     public static void readCommand(String str){
+        str = str.toLowerCase();
         initNewParameters();
         if(str.contains(" ")){
             parserName = str.substring(0, str.indexOf(" "));

@@ -42,7 +42,7 @@ public class Application {
         for (CourseModel c : courseList){
             if (str.equals("-all")){
                 TablePrinter.printTableValues(c);
-            } else if (c.getName().contains(str)){
+            } else if (c.getName().toLowerCase().contains(str)){
                 TablePrinter.printTableValues(c);
             }
         }

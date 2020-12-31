@@ -1,18 +1,21 @@
 package com.edu.pars;
 
-public class CommandReader {
+public class CommandProvider {
     public static String parserName;
     public static String filePath;
     public static String keyString;
 
     public static void readCommand(String str){
+        str = str.toLowerCase();
         initNewParameters();
         if(str.contains(" ")){
-            parserName = str.substring(0, str.indexOf(" "));
-            str = str.substring(str.indexOf(" ")).trim();
+            int index = str.indexOf(" ");
+            parserName = str.substring(0, index);
+            str = str.substring(index).trim();
             if (str.contains(" ")) {
-                filePath = str.substring(0, str.indexOf(" "));
-                keyString = str.substring(str.indexOf(" ")).trim();
+                index = str.indexOf(" ");
+                filePath = str.substring(0, index);
+                keyString = str.substring(index).trim();
             } else {
                 filePath = str;
                 keyString = "-all";

@@ -1,6 +1,6 @@
 package com.edu.pars.dom;
 
-import com.edu.pars.CommandReader;
+import com.edu.pars.CommandProvider;
 import com.edu.pars.CourseModel;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.edu.pars.TagNameConstants.*;
-import static com.edu.pars.dom.Utility.isCorrect;
-import static com.edu.pars.dom.Utility.isElement;
+import static com.edu.pars.dom.UtilsDOM.isCorrect;
+import static com.edu.pars.dom.UtilsDOM.isElement;
 
 public class ParserDOM {
     public static List<CourseModel> parse() throws ParserConfigurationException, IOException, SAXException {
@@ -23,7 +23,7 @@ public class ParserDOM {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         try {
-            Document document = builder.parse(new File(CommandReader.filePath));
+            Document document = builder.parse(new File(CommandProvider.filePath));
 
             Element element = document.getDocumentElement();
             NodeList courseList = element.getElementsByTagName(COURSE_TAG);
@@ -43,7 +43,7 @@ public class ParserDOM {
             node = nodeList.item(i);
             if (isElement(node)) {
                 String value="";
-                if (Utility.isCorrect(node)){
+                if (UtilsDOM.isCorrect(node)){
                     Text text = (Text) node.getFirstChild();
                     value = text.getData().trim();
                 }

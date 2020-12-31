@@ -1,25 +1,37 @@
 package com.edu.pars.dom;
 
 import com.edu.pars.CommandProvider;
+import com.edu.pars.CourseModel;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.util.List;
 
-import static com.edu.pars.utils.TestConst.DEFAULT_FILE_PATH;
+import static com.edu.pars.utils.TestUtils.*;
 
 public class ParserDOMTest {
 
-    @BeforeClass
-    public static void init(){
-        CommandProvider.filePath = DEFAULT_FILE_PATH;
-    }
     @Test
-    public void parse_DocumentToModelListByDOM_NotEmpty()
+    public void parse_DocumentToModelListByDOM()
             throws IOException, SAXException, ParserConfigurationException {
-        Assert.assertFalse(ParserDOM.parse().isEmpty());
+        CommandProvider.filePath = DEFAULT_FILE_PATH;
+        List<CourseModel> courses = ParserDOM.parse();
+        Assert.assertFalse(courses.isEmpty());
+        Assert.assertEquals(8, courses.size());
+        Assert.assertEquals(FIRST_COURSE, courses.get(0));
+        Assert.assertEquals(LAST_COURSE, courses.get(courses.size() - 1));
+    }
+
+    @Test
+    public void parse_TestDocumentToModeListByDOM()
+            throws IOException, SAXException, ParserConfigurationException {
+        CommandProvider.filePath = TEST_FILE_PATH;
+        List<CourseModel> courses = ParserDOM.parse();
+        Assert.assertFalse(courses.isEmpty());
+        Assert.assertEquals(1, courses.size());
+        Assert.assertEquals(TEST_COURSE, courses.get(0));
     }
 }

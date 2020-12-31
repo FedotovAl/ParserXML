@@ -1,5 +1,7 @@
 package com.edu.pars;
 
+import java.util.Objects;
+
 public class CourseModel {
     private String id;
     private String name;
@@ -56,5 +58,22 @@ public class CourseModel {
                 ", createDate='" + createDate + '\'' +
                 ", taskList='" + taskList + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CourseModel that = (CourseModel) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(author, that.author) &&
+                Objects.equals(createDate, that.createDate) &&
+                Objects.equals(taskList, that.taskList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, author, createDate, taskList);
     }
 }
